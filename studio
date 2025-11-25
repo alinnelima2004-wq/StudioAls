@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studio de Beleza - Itapevi</title>
+    <meta name="description" content="Studio de Beleza em Itapevi - serviços de manicure, pedicure, escova, design de sobrancelha e atendimento a domicílio. Agende pelo WhatsApp.">
+    <meta name="theme-color" content="#fce7f3">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -17,11 +19,15 @@
         }
         .service-card {
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            cursor: pointer; /* Indica que é clicável */
+            cursor: pointer;
+            border: none;
+            text-align: left;
         }
-        .service-card:hover {
+        .service-card:hover,
+        .service-card:focus {
             transform: translateY(-3px);
             box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.1);
+            outline: none;
         }
         .pulse-btn {
             animation: pulse-animation 2s infinite;
@@ -54,18 +60,14 @@
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center py-6 px-4">
-
-    <!-- Container do Banner (Formato Mobile-First) -->
-    <div class="max-w-md w-full bg-white shadow-2xl rounded-3xl overflow-hidden border border-pink-100 relative">
-        
+    <main id="main" class="max-w-md w-full bg-white shadow-2xl rounded-3xl overflow-hidden border border-pink-100 relative" aria-label="Conteúdo principal">
         <!-- Cabeçalho com Imagem -->
         <div class="relative h-64">
-            <!-- [Image of Banner Studio de beleza] -->
-            <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=1000&auto=format&fit=crop" 
-                 alt="Studio de Beleza" 
+            <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=1000&auto=format&fit=crop"
+                 alt="Profissional cuidando das unhas em estúdio de beleza"
                  class="w-full h-full object-cover"
-                 onerror="this.onerror=null;this.src='https://placehold.co/1000x600/fecaca/9d174d?text=Seu+Studio';"
-                 >
+                 width="1000" height="600"
+                 onerror="this.onerror=null;this.src='https://placehold.co/1000x600/fecaca/9d174d?text=Seu+Studio';">
             <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-center p-4">
                 <h1 class="text-4xl text-white font-bold mb-2 shadow-sm">Studio de Beleza</h1>
                 <p class="text-pink-100 text-lg tracking-widest uppercase text-sm">Realce sua beleza natural</p>
@@ -74,238 +76,377 @@
 
         <!-- Conteúdo Principal -->
         <div class="p-6">
-            
-            <!-- Lista de Serviços -->
             <div class="text-center mb-6">
                 <h2 class="text-2xl text-pink-900 font-bold mb-6 border-b-2 border-pink-100 pb-2 inline-block">Nossos Serviços</h2>
                 <p class="text-sm text-gray-500 mb-4">Clique em um serviço para ver o orçamento.</p>
-                
-                <div class="grid grid-cols-1 gap-4 text-left">
-                    <!-- Manicure -->
-                    <div class="service-card flex items-center justify-between p-3 bg-pink-50 rounded-lg" data-service="Manicure">
+
+                <div class="grid grid-cols-1 gap-4">
+                    <button type="button" class="service-card flex items-center justify-between p-3 bg-pink-50 rounded-lg" data-service="Manicure" aria-label="Manicure, R$ 30,00">
                         <div class="flex items-center">
                             <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-pink-500 shadow-sm mr-4">
-                                <i class="fa-solid fa-hand-sparkles"></i>
+                                <i class="fa-solid fa-hand-sparkles" aria-hidden="true"></i>
                             </div>
                             <span class="text-gray-700 font-semibold text-lg">Manicure</span>
                         </div>
                         <span class="text-pink-600 font-bold text-lg">R$ 30,00</span>
-                    </div>
+                    </button>
 
-                    <!-- Pedicure -->
-                    <div class="service-card flex items-center justify-between p-3 bg-pink-50 rounded-lg" data-service="Pedicure">
+                    <button type="button" class="service-card flex items-center justify-between p-3 bg-pink-50 rounded-lg" data-service="Pedicure" aria-label="Pedicure, R$ 40,00">
                         <div class="flex items-center">
                             <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-pink-500 shadow-sm mr-4">
-                                <i class="fa-solid fa-shoe-prints"></i>
+                                <i class="fa-solid fa-shoe-prints" aria-hidden="true"></i>
                             </div>
                             <span class="text-gray-700 font-semibold text-lg">Pedicure</span>
                         </div>
                         <span class="text-pink-600 font-bold text-lg">R$ 40,00</span>
-                    </div>
+                    </button>
 
-                    <!-- Escova -->
-                    <div class="service-card flex items-center justify-between p-3 bg-pink-50 rounded-lg" data-service="Escova">
+                    <button type="button" class="service-card flex items-center justify-between p-3 bg-pink-50 rounded-lg" data-service="Escova" aria-label="Escova, R$ 60,00">
                         <div class="flex items-center">
                             <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-pink-500 shadow-sm mr-4">
-                                <i class="fa-solid fa-wind"></i>
+                                <i class="fa-solid fa-wind" aria-hidden="true"></i>
                             </div>
                             <span class="text-gray-700 font-semibold text-lg">Escova</span>
                         </div>
                         <span class="text-pink-600 font-bold text-lg">R$ 60,00</span>
-                    </div>
+                    </button>
 
-                    <!-- Design de Sobrancelha -->
-                    <div class="service-card flex items-center justify-between p-3 bg-pink-50 rounded-lg" data-service="Design de sobrancelha">
+                    <button type="button" class="service-card flex items-center justify-between p-3 bg-pink-50 rounded-lg" data-service="Design de sobrancelha" aria-label="Design de sobrancelha, R$ 30,00">
                         <div class="flex items-center">
                             <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-pink-500 shadow-sm mr-4">
-                                <i class="fa-regular fa-eye"></i>
+                                <i class="fa-regular fa-eye" aria-hidden="true"></i>
                             </div>
                             <span class="text-gray-700 font-semibold text-lg">Design de sobrancelha</span>
                         </div>
                         <span class="text-pink-600 font-bold text-lg">R$ 30,00</span>
-                    </div>
+                    </button>
 
-                    <!-- Plástica dos Pés -->
-                    <div class="service-card flex items-center justify-between p-3 bg-pink-50 rounded-lg" data-service="Plástica dos pés">
+                    <button type="button" class="service-card flex items-center justify-between p-3 bg-pink-50 rounded-lg" data-service="Plástica dos pés" aria-label="Plástica dos pés, R$ 70,00">
                         <div class="flex items-center">
                             <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-pink-500 shadow-sm mr-4">
-                                <i class="fa-solid fa-spa"></i>
+                                <i class="fa-solid fa-spa" aria-hidden="true"></i>
                             </div>
                             <span class="text-gray-700 font-semibold text-lg">Plástica dos pés</span>
                         </div>
                         <span class="text-pink-600 font-bold text-lg">R$ 70,00</span>
-                    </div>
+                    </button>
 
-                    <!-- Esmaltação em Gel (Mão) -->
-                    <div class="service-card flex items-center justify-between p-3 bg-pink-50 rounded-lg" data-service="Esmaltação em Gel (Mão)">
+                    <button type="button" class="service-card flex items-center justify-between p-3 bg-pink-50 rounded-lg" data-service="Esmaltação em Gel (Mão)" aria-label="Esmaltação em Gel mão, R$ 50,00">
                         <div class="flex items-center">
                             <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-pink-500 shadow-sm mr-4">
-                                <i class="fa-solid fa-heart"></i>
+                                <i class="fa-solid fa-heart" aria-hidden="true"></i>
                             </div>
                             <span class="text-gray-700 font-semibold text-lg">Esmaltação em Gel (Mão)</span>
                         </div>
-                        <span class="text-pink-600 font-bold text-lg">R$ 50,00</span> <!-- VALOR ATUALIZADO -->
-                    </div>
+                        <span class="text-pink-600 font-bold text-lg">R$ 50,00</span>
+                    </button>
 
-                    <!-- Esmaltação em Gel (Pé) -->
-                    <div class="service-card flex items-center justify-between p-3 bg-pink-50 rounded-lg" data-service="Esmaltação em Gel (Pé)">
+                    <button type="button" class="service-card flex items-center justify-between p-3 bg-pink-50 rounded-lg" data-service="Esmaltação em Gel (Pé)" aria-label="Esmaltação em Gel pé, R$ 45,00">
                         <div class="flex items-center">
                             <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-pink-500 shadow-sm mr-4">
-                                <i class="fa-solid fa-gem"></i>
+                                <i class="fa-solid fa-gem" aria-hidden="true"></i>
                             </div>
                             <span class="text-gray-700 font-semibold text-lg">Esmaltação em Gel (Pé)</span>
                         </div>
-                        <span class="text-pink-600 font-bold text-lg">R$ 45,00</span> <!-- VALOR ATUALIZADO -->
-                    </div>
+                        <span class="text-pink-600 font-bold text-lg">R$ 45,00</span>
+                    </button>
 
-                    <!-- Henna na Sobrancelha -->
-                    <div class="service-card flex items-center justify-between p-3 bg-pink-50 rounded-lg" data-service="Henna na Sobrancelha">
+                    <button type="button" class="service-card flex items-center justify-between p-3 bg-pink-50 rounded-lg" data-service="Henna na Sobrancelha" aria-label="Henna na sobrancelha, R$ 40,00">
                         <div class="flex items-center">
                             <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-pink-500 shadow-sm mr-4">
-                                <i class="fa-solid fa-brush"></i>
+                                <i class="fa-solid fa-brush" aria-hidden="true"></i>
                             </div>
                             <span class="text-gray-700 font-semibold text-lg">Henna na Sobrancelha</span>
                         </div>
                         <span class="text-pink-600 font-bold text-lg">R$ 40,00</span>
-                    </div>
+                    </button>
                 </div>
             </div>
 
-            <!-- NOVO DESTAQUE: Negociação de Pacotes -->
             <div class="bg-pink-100 rounded-xl p-3 text-center border-2 border-pink-200 mb-8">
                 <p class="text-sm text-pink-800 font-bold flex items-center justify-center">
-                    <i class="fa-solid fa-tags text-pink-600 mr-2"></i>
+                    <i class="fa-solid fa-tags text-pink-600 mr-2" aria-hidden="true"></i>
                     Quer um Pacote? Os valores podem variar!
                 </p>
                 <p class="text-xs text-gray-600 mt-1">Negocie um desconto especial ao combinar vários serviços com a profissional.</p>
             </div>
-            
-            <!-- Destaque: Atendimento a Domicílio -->
+
             <div class="bg-gradient-to-r from-pink-500 to-pink-600 rounded-xl p-4 text-center text-white shadow-lg mb-8">
                 <div class="mb-2">
-                    <i class="fa-solid fa-car-side text-3xl"></i>
+                    <i class="fa-solid fa-car-side text-3xl" aria-hidden="true"></i>
                 </div>
                 <h3 class="text-xl font-bold mb-1">Vamos até você!</h3>
-                <p class="text-sm opacity-90">Disponível para atendimento a domicílio - **Consulte a taxa de deslocamento**</p>
+                <p class="text-sm opacity-90">Disponível para atendimento a domicílio - <strong>Consulte a taxa de deslocamento</strong></p>
             </div>
 
-            <!-- Localização e Contato -->
             <div class="text-center space-y-4">
                 <div class="flex items-center justify-center text-gray-600">
-                    <i class="fa-solid fa-location-dot text-pink-500 mr-2"></i>
+                    <i class="fa-solid fa-location-dot text-pink-500 mr-2" aria-hidden="true"></i>
                     <span>Itapevi - SP</span>
                 </div>
 
-                <!-- Botão WhatsApp -->
-                <a href="https://wa.me/5511982006485?text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20e%20solicitar%20um%20orçamento%20completo%20(ou%20negociar%20um%20pacote)." target="_blank" class="pulse-btn block w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3 px-4 rounded-full transition duration-300 flex items-center justify-center">
-                    <i class="fa-brands fa-whatsapp text-2xl mr-2"></i>
+                <a href="https://wa.me/5511982006485?text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20e%20solicitar%20um%20orçamento%20completo%20(ou%20negociar%20um%20pacote)." target="_blank" rel="noopener noreferrer" class="pulse-btn block w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3 px-4 rounded-full transition duration-300 flex items-center justify-center">
+                    <i class="fa-brands fa-whatsapp text-2xl mr-2" aria-hidden="true"></i>
                     Agendar / Negociar Pacotes
                 </a>
-                
+
                 <p class="text-gray-500 text-sm mt-2 font-semibold">
                     (11) 98200-6485
                 </p>
             </div>
 
+            <!-- Formulário de Agendamento -->
+            <section id="booking-section" class="mt-6">
+                <h2 class="text-lg font-bold text-pink-800 mb-3">Agende seu horário</h2>
+                <form id="booking-form" class="space-y-3 bg-pink-50 p-4 rounded-lg border border-pink-100">
+                    <div>
+                        <label for="client-name" class="block text-sm font-medium text-gray-700">Nome</label>
+                        <input id="client-name" name="name" type="text" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" placeholder="Seu nome">
+                    </div>
+                    <div>
+                        <label for="client-phone" class="block text-sm font-medium text-gray-700">Telefone (WhatsApp)</label>
+                        <input id="client-phone" name="phone" type="tel" required pattern="[0-9+ ()-]{6,}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" placeholder="(11) 9XXXX-XXXX">
+                    </div>
+                    <div>
+                        <label for="service-select" class="block text-sm font-medium text-gray-700">Serviço</label>
+                        <select id="service-select" name="service" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                            <option value="">Selecione um serviço</option>
+                            <option>Manicure</option>
+                            <option>Pedicure</option>
+                            <option>Escova</option>
+                            <option>Design de sobrancelha</option>
+                            <option>Plástica dos pés</option>
+                            <option>Esmaltação em Gel (Mão)</option>
+                            <option>Esmaltação em Gel (Pé)</option>
+                            <option>Henna na Sobrancelha</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label for="date" class="block text-sm font-medium text-gray-700">Data</label>
+                            <input id="date" name="date" type="date" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                        </div>
+                        <div>
+                            <label for="time" class="block text-sm font-medium text-gray-700">Horário</label>
+                            <input id="time" name="time" type="time" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="notes" class="block text-sm font-medium text-gray-700">Observações (opcional)</label>
+                        <textarea id="notes" name="notes" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2" placeholder="Ex.: preferências, alergias..."></textarea>
+                    </div>
+
+                    <div class="flex space-x-2">
+                        <button id="submit-booking" type="submit" class="w-1/2 bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-full">Enviar</button>
+                        <button id="clear-booking" type="button" class="w-1/2 bg-white border border-pink-200 text-pink-600 font-bold py-2 px-4 rounded-full">Limpar</button>
+                    </div>
+
+                    <p id="booking-feedback" class="text-sm text-green-600 hidden"></p>
+                </form>
+            </section>
         </div>
 
-        <!-- Footer Decorativo -->
         <div class="bg-pink-100 p-3 text-center">
             <p class="text-pink-400 text-xs">Seu momento de autocuidado</p>
         </div>
-    </div>
+    </main>
 
-    <!-- Modal de Orçamento (Hidden by default) -->
-    <div id="budget-modal-backdrop" class="modal-backdrop">
-        <div id="budget-modal" class="modal-content bg-white p-6 rounded-2xl shadow-2xl max-w-sm w-11/12">
+    <!-- Modal de Orçamento -->
+    <div id="budget-modal-backdrop" class="modal-backdrop" aria-hidden="true">
+        <div id="budget-modal" class="modal-content bg-white p-6 rounded-2xl shadow-2xl max-w-sm w-11/12" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-body">
             <h3 id="modal-title" class="text-2xl font-bold text-pink-800 mb-3 border-b pb-2">Orçamento</h3>
-            
+
             <div id="modal-body" class="mb-4 text-gray-700 space-y-1">
-                <!-- Content injected by JS -->
+                <!-- Conteúdo inserido com JS de forma segura -->
             </div>
 
             <div class="bg-pink-50 p-3 rounded-lg border border-pink-100 mt-4">
                  <p class="text-sm text-pink-700 font-semibold flex items-center">
-                    <i class="fa-solid fa-house-chimney text-pink-500 mr-2"></i>
+                    <i class="fa-solid fa-house-chimney text-pink-500 mr-2" aria-hidden="true"></i>
                     Atendimento a Domicílio: <span class="ml-2 font-bold">Consulte a taxa de deslocamento.</span>
                 </p>
                 <p class="text-xs text-gray-500 mt-1">*Taxa de deslocamento não inclusa no valor base.</p>
             </div>
 
-            <button onclick="hideBudgetModal()" class="mt-6 w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 rounded-full transition duration-300">
+            <button id="modal-close-btn" type="button" class="mt-6 w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 rounded-full transition duration-300">
                 Fechar
             </button>
         </div>
     </div>
 
     <script>
-        // Dados de Orçamento
+        // Dados de Orçamento (fonte confiável local)
         const PRICES = {
             "Manicure": { price: 30.00, details: "Corte, lixamento, cutilagem e esmaltação básica." },
             "Pedicure": { price: 40.00, details: "Corte, lixamento, cutilagem e esmaltação dos pés." },
             "Escova": { price: 60.00, details: "Lavagem e escovação dos fios (valor pode variar conforme o volume/tamanho)." },
             "Design de sobrancelha": { price: 30.00, details: "Modelagem e design das sobrancelhas com pinça e/ou cera." },
             "Plástica dos pés": { price: 70.00, details: "Tratamento profundo para hidratação e remoção de calosidades." },
-            // NOVOS SERVIÇOS
-            "Esmaltação em Gel (Mão)": { price: 50.00, details: "Aplicação de esmalte em gel na mão com secagem rápida e alta durabilidade. Não inclui cutilagem e lixamento." }, // VALOR ALTERADO
-            "Esmaltação em Gel (Pé)": { price: 45.00, details: "Aplicação de esmalte em gel no pé com secagem rápida e alta durabilidade. Não inclui cutilagem e lixamento." }, // VALOR ALTERADO
+            "Esmaltação em Gel (Mão)": { price: 50.00, details: "Aplicação de esmalte em gel na mão com secagem rápida e alta durabilidade. Não inclui cutilagem e lixamento." },
+            "Esmaltação em Gel (Pé)": { price: 45.00, details: "Aplicação de esmalte em gel no pé com secagem rápida e alta durabilidade. Não inclui cutilagem e lixamento." },
             "Henna na Sobrancelha": { price: 40.00, details: "Aplicação de Henna para preenchimento e definição da sobrancelha. Inclui design." }
         };
 
-        // Função para formatar o valor como moeda brasileira
-        const formatPrice = (value) => {
-            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        };
+        const formatPrice = (value) => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-        // Elementos do Modal
         const modalBackdrop = document.getElementById('budget-modal-backdrop');
+        const modal = document.getElementById('budget-modal');
         const modalTitle = document.getElementById('modal-title');
         const modalBody = document.getElementById('modal-body');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+        const mainEl = document.getElementById('main');
 
-        // Função para mostrar o Modal de Orçamento
-        function showBudgetModal(serviceName) {
+        let lastActiveElement = null;
+
+        function openModalForService(serviceName, openerBtn) {
             const service = PRICES[serviceName];
+            if (!service) return;
 
-            if (!service) return; // Garante que o serviço existe
+            lastActiveElement = openerBtn || document.activeElement;
 
-            // 1. Atualiza Título do Modal
             modalTitle.textContent = serviceName;
 
-            // 2. Atualiza Corpo do Modal
-            modalBody.innerHTML = `
-                <p class="text-3xl font-extrabold text-pink-600 text-center mb-4">${formatPrice(service.price)}</p>
-                <p class="text-base text-center">${service.details}</p>
-                <hr class="my-3 border-pink-100">
-                <p class="text-sm text-gray-500 text-center">Valor base. Atendimento em Itapevi/SP.</p>
-            `;
+            modalBody.innerHTML = '';
+            const priceEl = document.createElement('p');
+            priceEl.className = 'text-3xl font-extrabold text-pink-600 text-center mb-4';
+            priceEl.textContent = formatPrice(service.price);
+            const detailsEl = document.createElement('p');
+            detailsEl.className = 'text-base text-center';
+            detailsEl.textContent = service.details;
+            const hr = document.createElement('hr');
+            hr.className = 'my-3 border-pink-100';
+            const note = document.createElement('p');
+            note.className = 'text-sm text-gray-500 text-center';
+            note.textContent = 'Valor base. Atendimento em Itapevi/SP.';
 
-            // 3. Exibe o Modal
+            modalBody.appendChild(priceEl);
+            modalBody.appendChild(detailsEl);
+            modalBody.appendChild(hr);
+            modalBody.appendChild(note);
+
             modalBackdrop.style.display = 'flex';
+            modalBackdrop.setAttribute('aria-hidden', 'false');
+            mainEl.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = 'hidden';
+
+            setTimeout(() => modalCloseBtn.focus(), 50);
         }
 
-        // Função para esconder o Modal
-        function hideBudgetModal() {
+        function closeModal() {
             modalBackdrop.style.display = 'none';
+            modalBackdrop.setAttribute('aria-hidden', 'true');
+            mainEl.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = '';
+            if (lastActiveElement && typeof lastActiveElement.focus === 'function') {
+                lastActiveElement.focus();
+            }
         }
 
-        // Adiciona listeners de evento a todos os cartões de serviço
+        // Booking form handling: stores to localStorage and opens WhatsApp prefilled message
+        const bookingForm = document.getElementById('booking-form');
+        const bookingFeedback = document.getElementById('booking-feedback');
+        const clearBtn = document.getElementById('clear-booking');
+
+        function sanitize(text) {
+            return String(text || '').trim();
+        }
+
+        function buildWhatsAppMessage(data) {
+            return encodeURIComponent(
+                `Olá! Gostaria de agendar \nNome: ${data.name}\nTelefone: ${data.phone}\nServiço: ${data.service}\nData: ${data.date} \nHorário: ${data.time}\nObservações: ${data.notes || '-'} `
+            );
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            const serviceCards = document.querySelectorAll('.service-card');
-            serviceCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const serviceName = card.getAttribute('data-service');
-                    showBudgetModal(serviceName);
+            const serviceButtons = document.querySelectorAll('[data-service]');
+            serviceButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const name = btn.getAttribute('data-service');
+                    openModalForService(name, btn);
+                });
+                // also allow opening booking form preselecting service when ctrl/shift-click
+                btn.addEventListener('dblclick', () => {
+                    const svc = btn.getAttribute('data-service');
+                    const select = document.getElementById('service-select');
+                    if (select) select.value = svc;
+                    document.getElementById('client-name').focus();
                 });
             });
 
-            // Permite fechar o modal clicando no fundo
-            modalBackdrop.addEventListener('click', (event) => {
-                if (event.target === modalBackdrop) {
-                    hideBudgetModal();
+            modalBackdrop.addEventListener('click', (e) => {
+                if (e.target === modalBackdrop) closeModal();
+            });
+
+            modalCloseBtn.addEventListener('click', closeModal);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modalBackdrop.style.display === 'flex') {
+                    closeModal();
                 }
             });
-        });
 
+            modal.addEventListener('keydown', (e) => {
+                if (e.key !== 'Tab') return;
+                const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                if (focusable.length === 0) return;
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            });
+
+            // Booking form
+            if (bookingForm) {
+                bookingForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const formData = new FormData(bookingForm);
+                    const data = {
+                        name: sanitize(formData.get('name')),
+                        phone: sanitize(formData.get('phone')),
+                        service: sanitize(formData.get('service')),
+                        date: sanitize(formData.get('date')),
+                        time: sanitize(formData.get('time')),
+                        notes: sanitize(formData.get('notes'))
+                    };
+
+                    if (!data.name || !data.phone || !data.service || !data.date || !data.time) {
+                        bookingFeedback.textContent = 'Por favor, preencha todos os campos obrigatórios.';
+                        bookingFeedback.classList.remove('hidden');
+                        bookingFeedback.classList.add('text-red-600');
+                        return;
+                    }
+
+                    // Save to localStorage as a small queue (no backend)
+                    const queue = JSON.parse(localStorage.getItem('studio_bookings') || '[]');
+                    queue.push({ ...data, createdAt: new Date().toISOString() });
+                    localStorage.setItem('studio_bookings', JSON.stringify(queue));
+
+                    // Open WhatsApp with prefilled message to confirm booking
+                    const waMsg = buildWhatsAppMessage(data);
+                    const waUrl = `https://wa.me/5511982006485?text=${waMsg}`;
+
+                    bookingFeedback.textContent = 'Agendamento preparado. Você será redirecionado para o WhatsApp para confirmar.';
+                    bookingFeedback.classList.remove('hidden');
+                    bookingFeedback.classList.remove('text-red-600');
+                    bookingFeedback.classList.add('text-green-600');
+
+                    // small delay to allow users to read message (and for mobile-friendly behavior)
+                    setTimeout(() => {
+                        window.open(waUrl, '_blank', 'noopener');
+                    }, 800);
+                });
+
+                clearBtn.addEventListener('click', () => {
+                    bookingForm.reset();
+                    bookingFeedback.classList.add('hidden');
+                });
+            }
+        });
     </script>
 </body>
 </html>
